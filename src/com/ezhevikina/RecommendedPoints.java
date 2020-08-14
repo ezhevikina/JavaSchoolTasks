@@ -33,21 +33,21 @@ public class RecommendedPoints {
 
         n = Integer.parseInt(numbersFromInput[0]);
         if (n > 10e5) throw new IllegalArgumentException("Ошибка: точек подачи не должно быть больше 10^5");
-        if (n < 0) throw new IllegalArgumentException("Ошибка: введено отрицательное количество точек подачи");
+        if (n <= 0) throw new IllegalArgumentException("Ошибка: введите положительное количество точек подачи");
 
         r = Integer.parseInt(numbersFromInput[1]);
         if (r > 10e9)
           throw new IllegalArgumentException("Ошибка: максимальное расстояние до рекомендованной точки не должно превышать 10^9");
-        if (r < 0)
-          throw new IllegalArgumentException("Ошибка: введено отрицательное расстояние до рекомандованной точки");
+        if (r <= 0)
+          throw new IllegalArgumentException("Ошибка: введите положительное расстояние до рекомандованной точки");
 
         System.out.println(formatter.format("Введите %d точ%s подачи:", n, pointSuffix(n)));
         input = reader.readLine();
         numbersFromInput = input.split(" ");
 
         ArrayList<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < numbersFromInput.length; i++) {
-          numbers.add(Integer.parseInt(numbersFromInput[i]));
+        for (String s : numbersFromInput) {
+          numbers.add(Integer.parseInt(s));
         }
         Collections.sort(numbers);
 
@@ -55,8 +55,10 @@ public class RecommendedPoints {
 
       } catch (NumberFormatException e) {
         System.out.println("Ошибка: некорректный ввод. Укажите целые числа последовательно через пробел");
+        continue;
       } catch (IllegalArgumentException ei) {
         System.out.println(ei.getMessage());
+        continue;
       }
 
       goOn = false;
@@ -101,9 +103,9 @@ public class RecommendedPoints {
         } else break;
       }
 
-      for (int i = 0; i < numbers.size(); i++) {
-        if (numbers.get(i) <= poi + r) {
-          numbersDuplicate.remove(Integer.valueOf(numbers.get(i)));
+      for (Integer number : numbers) {
+        if (number <= poi + r) {
+          numbersDuplicate.remove(number);
         } else break;
       }
 

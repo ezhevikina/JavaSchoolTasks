@@ -55,7 +55,6 @@ public class Calculator {
 
       while (matcher.find()) {
         numbers.add(Double.parseDouble(matcher.group())); // лист с double числами
-        System.out.println(numbers);
       }
     }
 
@@ -127,11 +126,9 @@ public class Calculator {
   private static void performMultiplies(LinkedList<String> numbersAndSigns) {
     int lastIndex;
     Double previous, next = null;
-    System.out.println(numbersAndSigns);
 
     while ((lastIndex = numbersAndSigns.lastIndexOf("*")) != -1) {
 
-      System.out.println(lastIndex);
       try {
         previous = Double.parseDouble(numbersAndSigns.get(lastIndex - 1));
         try {
@@ -139,12 +136,10 @@ public class Calculator {
         } catch (NumberFormatException e) {
           numbersAndSigns.remove(lastIndex + 1);
         }
-
         String multiplied = String.valueOf((previous * next));
         numbersAndSigns.remove(lastIndex + 1);
         numbersAndSigns.remove(lastIndex);
         numbersAndSigns.set(lastIndex - 1, multiplied);
-        System.out.println(numbersAndSigns);
 
       } catch (NumberFormatException e) {
         numbersAndSigns.remove(lastIndex - 1);
@@ -156,10 +151,7 @@ public class Calculator {
   private static void performDivisions(LinkedList<String> numbersAndSigns) {
     int lastIndex;
     Double previous, next = null;
-    System.out.println(numbersAndSigns);
     while ((lastIndex = numbersAndSigns.lastIndexOf("/")) != -1) {
-
-      System.out.println(lastIndex);
       try {
         previous = Double.parseDouble(numbersAndSigns.get(lastIndex - 1));
         try {
@@ -167,14 +159,11 @@ public class Calculator {
         } catch (NumberFormatException e) {
           numbersAndSigns.remove(lastIndex + 1);
         }
-
         if (next == 0.0) throw new IllegalArgumentException();
         String s = String.valueOf((previous / next));
         numbersAndSigns.remove(lastIndex + 1);
         numbersAndSigns.remove(lastIndex);
         numbersAndSigns.set(lastIndex - 1, s);
-        System.out.println(numbersAndSigns);
-
 
       } catch (NumberFormatException e) {
         numbersAndSigns.remove(lastIndex - 1);
