@@ -1,4 +1,4 @@
-package com.ezhevikina;
+package com.ezhevikina.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

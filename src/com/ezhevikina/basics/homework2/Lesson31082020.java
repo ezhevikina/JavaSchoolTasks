@@ -1,4 +1,4 @@
-package com.ezhevikina;
+package com.ezhevikina.basics.homework2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
