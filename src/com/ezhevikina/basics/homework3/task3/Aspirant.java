@@ -1,8 +1,8 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task3;
 
 public class Aspirant extends Student {
 
-  String researchName;
+  private String researchName;
 
   public Aspirant(String firstName, String lastName, String group, double averageMark, String researchName) {
 

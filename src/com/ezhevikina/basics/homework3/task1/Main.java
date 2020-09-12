@@ -1,4 +1,4 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task1;
 
 /**
  * Создать класс Animal и расширяющие его классы Dog, Cat, Horse.
@@ -14,7 +14,7 @@ package com.ezhevikina.basics.homework3;
  * у вас типов. В цикле отправляйте их на прием к ветеринару.
  */
 
-public class Task2 {
+public class Main {
 
   public static void main(String[] args) {
 
@@ -23,8 +23,9 @@ public class Task2 {
     Horse horse = new Horse("Лошадиная еда", "На ипподроме", "Наездник Петр");
     
     Animal[] animals = {cat, dog, horse};
+    Veterinarian veterinarian = new Veterinarian();
     for (Animal animal : animals) {
-      Veterinarian.treatAnimal(animal);
+      veterinarian.treatAnimal(animal);
     }
   }
 }

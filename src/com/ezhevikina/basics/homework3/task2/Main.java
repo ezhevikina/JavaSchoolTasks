@@ -1,4 +1,4 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task2;
 
 /**
  * Создайте класс Phone, который содержит переменные number, model и weight.
@@ -18,7 +18,7 @@ package com.ezhevikina.basics.homework3;
  * будет отправлено сообщение. Метод выводит на консоль номера этих телефонов.
  */
 
-public class Task1 {
+public class Main {
 
   public static void main(String[] args) {
 

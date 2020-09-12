@@ -1,8 +1,8 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task1;
 
 public class Veterinarian {
 
-  public static void treatAnimal(Animal animal) {
+  public void treatAnimal(Animal animal) {
     System.out.println(animal.getFood() + " " + animal.getLocation());
   }
 }

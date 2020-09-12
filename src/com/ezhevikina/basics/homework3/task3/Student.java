@@ -1,4 +1,4 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task3;
 
 public class Student {
 

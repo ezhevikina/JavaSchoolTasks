@@ -1,4 +1,4 @@
-package com.ezhevikina.basics.homework3;
+package com.ezhevikina.basics.homework3.task3;
 
 /**
  * Создайте пример наследования, реализуйте класс Student и класс
@@ -17,7 +17,7 @@ package com.ezhevikina.basics.homework3;
  * Вызвать метод getScholarship() для каждого элемента массива.
  */
 
-public class Task3 {
+public class Main {
 
   public static void main(String[] args) {
 
