@@ -3,6 +3,7 @@ package com.ezhevikina.basics.homework2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 public class Lesson31082020 {
 
@@ -29,7 +30,7 @@ public class Lesson31082020 {
     describeNumber();
 
     System.out.println("\nЗадание 7");
-    getCallPrice();
+    getCallPrice(10);
 
     System.out.println("\nЗадание 8");
     getInfoAboutArray();
@@ -60,11 +61,9 @@ public class Lesson31082020 {
 
     int number = get3DigitInt();
     int sum = 0;
-    for (int i = 0; i < 3; i++) {
-      sum += Integer.parseInt(
-          String.valueOf(
-              Integer.toString(number)
-                  .charAt(i)));
+    while(number != 0){
+      sum += (number % 10);
+      number /= 10;
     }
     System.out.println("Сумма цифр: " + sum);
   }
@@ -75,7 +74,7 @@ public class Lesson31082020 {
    **/
   private static void addOneIfPositive() throws IOException {
 
-    Integer number = getInt();
+    int number = getInt();
     if (number > 0) {
       System.out.println(number + " + 1: " + (++number));
     } else {
@@ -147,21 +146,31 @@ public class Lesson31082020 {
    * задание 7: написать программу, вычисляющую стоимость междугороднего разговора
    * в зависимости от кода города
    **/
-  private static void getCallPrice() throws IOException {
+  private static void getCallPrice(double callLength) throws IOException {
 
     int number = get3DigitInt();
+    HashMap<String, Double> cityPriceList = new HashMap<>();
+    cityPriceList.put("Москва", 4.15);
+    cityPriceList.put("Ростов", 1.98);
+    cityPriceList.put("Краснодар", 2.69);
+    cityPriceList.put("Киров", 5.0);
+
     switch (number) {
       case 905:
-        System.out.println("Москва. Стоимость разговора: 41.5");
+        System.out.println(String.format("Москва. Стоимость разговора: %.2f",
+            callLength * cityPriceList.get("Москва")));
         break;
       case 491:
-        System.out.println("Ростов. Стоимость разговора: 19.8");
+        System.out.println(String.format("Ростов. Стоимость разговора: %.2f",
+            callLength * cityPriceList.get("Ростов")));
         break;
       case 194:
-        System.out.println("Краснодар. Стоимость разговора: 26.9");
+        System.out.println(String.format("Краснодар. Стоимость разговора: %.2f",
+            callLength * cityPriceList.get("Краснодар")));
         break;
       case 800:
-        System.out.println("Киров. Стоимость разговора: 50.0");
+        System.out.println(String.format("Киров. Стоимость разговора: %.2f",
+            callLength * cityPriceList.get("Киров")));
         break;
       default:
         System.out.println("Неизвестный код города");
