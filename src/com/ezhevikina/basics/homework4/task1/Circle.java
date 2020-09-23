@@ -1,7 +1,7 @@
 package com.ezhevikina.basics.homework4.task1;
 
 public class Circle implements Shape {
-  double radius;
+  private double radius;
 
   public Circle(double radius) {
     this.radius = radius;
