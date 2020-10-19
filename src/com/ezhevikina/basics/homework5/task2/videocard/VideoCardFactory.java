@@ -1,6 +1,16 @@
 package com.ezhevikina.basics.homework5.task2.videocard;
 
-public abstract class VideoCardFactory {
+import com.ezhevikina.basics.homework5.task2.ComputerType;
 
-  public abstract VideoCard addVideoCard();
+public class VideoCardFactory {
+
+  public VideoCard addVideoCard(ComputerType computerType) {
+    if (computerType == ComputerType.GAMER) {
+      return new GamerVideoCard();
+    } else if (computerType == ComputerType.OFFICE) {
+      return new RegularVideoCard();
+    } else {
+      throw new IllegalArgumentException();
+    }
+  }
 }
