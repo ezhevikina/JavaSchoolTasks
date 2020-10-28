@@ -12,10 +12,10 @@ public class BuildGamerComputer implements BuildComputer {
   public Computer build() {
     System.out.println("Собран игровой компьютер.");
     return new Computer(
-        new ProcessorFactory().addProcessor(ComputerType.GAMER),
-        new RamFactory().addRam(ComputerType.GAMER),
-        new VideoCardFactory().addVideoCard(ComputerType.GAMER),
-        new DataStorageFactory().addDataStorage(ComputerType.GAMER),
-        new MonitorFactory().addMonitor(ComputerType.GAMER));
+        new ProcessorFactory().addComponent(ComputerType.GAMER),
+        new RamFactory().addComponent(ComputerType.GAMER),
+        new VideoCardFactory().addComponent(ComputerType.GAMER),
+        new DataStorageFactory().addComponent(ComputerType.GAMER),
+        new MonitorFactory().addComponent(ComputerType.GAMER));
   }
 }

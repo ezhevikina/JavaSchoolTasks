@@ -1,25 +1,34 @@
 package com.ezhevikina.basics.homework5.task2.datastorage;
 
-public abstract class DataStorage {
+import com.ezhevikina.basics.homework5.task2.Component;
+import com.ezhevikina.basics.homework5.task2.ComputerType;
+
+public class DataStorage implements Component {
   private String manufacturer;
   private String type;
   private int formFactor;
 
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
+  public DataStorage(ComputerType computerType) {
+
+    if (computerType == ComputerType.GAMER) {
+      this.manufacturer = "Производитель классных накопителей";
+      this.type = "SSD";
+      this.formFactor = 100;
+
+    } else if (computerType == ComputerType.OFFICE) {
+      this.manufacturer = "Производитель обычных накопителей";
+      this.type = "HDD";
+      this.formFactor = 10;
+
+    } else {
+      throw new IllegalArgumentException();
+    }
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public void setFormFactor(int formFactor) {
-    this.formFactor = formFactor;
-  }
-
+  @Override
   public void printInfo() {
     System.out.println(String.format(
-        "накопитель. Производитель: %s, тип: %s, форм-фактор: %d",
+        "Накопитель. Производитель: %s, тип: %s, форм-фактор: %d",
         manufacturer,
         type,
         formFactor));

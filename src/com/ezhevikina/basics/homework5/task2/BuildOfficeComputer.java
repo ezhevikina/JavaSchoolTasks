@@ -12,11 +12,11 @@ public class BuildOfficeComputer implements BuildComputer {
   public Computer build() {
     System.out.println("Собран офисный компьютер.");
     return new Computer(
-        new ProcessorFactory().addProcessor(ComputerType.OFFICE),
-        new RamFactory().addRam(ComputerType.OFFICE),
-        new VideoCardFactory().addVideoCard(ComputerType.OFFICE),
-        new DataStorageFactory().addDataStorage(ComputerType.OFFICE),
-        new MonitorFactory().addMonitor(ComputerType.OFFICE));
+        new ProcessorFactory().addComponent(ComputerType.OFFICE),
+        new RamFactory().addComponent(ComputerType.OFFICE),
+        new VideoCardFactory().addComponent(ComputerType.OFFICE),
+        new DataStorageFactory().addComponent(ComputerType.OFFICE),
+        new MonitorFactory().addComponent(ComputerType.OFFICE));
 
   }
 }
