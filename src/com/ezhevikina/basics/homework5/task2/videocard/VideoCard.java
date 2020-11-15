@@ -1,30 +1,37 @@
 package com.ezhevikina.basics.homework5.task2.videocard;
 
-public abstract class VideoCard {
+import com.ezhevikina.basics.homework5.task2.Component;
+import com.ezhevikina.basics.homework5.task2.ComputerType;
+
+public class VideoCard implements Component {
   private String manufacturer;
   private String type;
   private int memory;
   private String coolingType;
 
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
+  public VideoCard(ComputerType computerType) {
+
+    if (computerType == ComputerType.GAMER) {
+      this.manufacturer = "Производитель игровых видеокарт";
+      this.type = "игровая";
+      this.coolingType = "активное";
+      this.memory = 100;
+
+    } else if (computerType == ComputerType.OFFICE) {
+      this.manufacturer = "Производитель обычных видеокарт";
+      this.type = "обычная";
+      this.coolingType = "пассивное";
+      this.memory = 10;
+
+    } else {
+      throw new IllegalArgumentException();
+    }
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public void setMemory(int memory) {
-    this.memory = memory;
-  }
-
-  public void setCoolingType(String coolingType) {
-    this.coolingType = coolingType;
-  }
-
+  @Override
   public void printInfo() {
     System.out.println(String.format(
-        "видеокарта. Производитель: %s, тип памяти: %s, объем памяти: %d, охлаждение: %s",
+        "Видеокарта. Производитель: %s, тип памяти: %s, объем памяти: %d, охлаждение: %s",
         manufacturer,
         type,
         memory,

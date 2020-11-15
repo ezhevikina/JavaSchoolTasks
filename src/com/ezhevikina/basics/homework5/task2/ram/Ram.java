@@ -1,31 +1,38 @@
 package com.ezhevikina.basics.homework5.task2.ram;
 
-public abstract class Ram {
+import com.ezhevikina.basics.homework5.task2.Component;
+import com.ezhevikina.basics.homework5.task2.ComputerType;
+
+public class Ram implements Component {
 
   private String manufacturer;
   private int memory;
   private int frequency;
   private String type;
 
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
+  public Ram(ComputerType computerType) {
+
+    if (computerType == ComputerType.GAMER) {
+      this.manufacturer = "производитель игровых ОЗУ";
+      this.frequency = 100;
+      this.memory = 100;
+      this.type = "DDR3";
+
+    } else if (computerType == ComputerType.OFFICE) {
+      this.manufacturer = "производитель обычных ОЗУ";
+      this.frequency = 10;
+      this.memory = 10;
+      this.type = "DDR2";
+
+    } else {
+      throw new IllegalArgumentException();
+    }
   }
 
-  public void setMemory(int memory) {
-    this.memory = memory;
-  }
-
-  public void setFrequency(int frequency) {
-    this.frequency = frequency;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
+  @Override
   public void printInfo() {
     System.out.println(String.format(
-        "Производитель: %s, объем памяти: %d, частота: %d, тип: %s",
+        "ОЗУ. Производитель: %s, объем памяти: %d, частота: %d, тип: %s",
         manufacturer,
         memory,
         frequency,

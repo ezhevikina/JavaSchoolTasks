@@ -1,10 +1,10 @@
 package com.ezhevikina.basics.homework5.task2;
 
-import com.ezhevikina.basics.homework5.task2.datastorage.GamerDataStorageFactory;
-import com.ezhevikina.basics.homework5.task2.monitor.GamerMonitorFactory;
-import com.ezhevikina.basics.homework5.task2.processor.GamerProcessorFactory;
-import com.ezhevikina.basics.homework5.task2.ram.GamerRamFactory;
-import com.ezhevikina.basics.homework5.task2.videocard.GamerVideoCardFactory;
+import com.ezhevikina.basics.homework5.task2.datastorage.DataStorageFactory;
+import com.ezhevikina.basics.homework5.task2.monitor.MonitorFactory;
+import com.ezhevikina.basics.homework5.task2.processor.ProcessorFactory;
+import com.ezhevikina.basics.homework5.task2.ram.RamFactory;
+import com.ezhevikina.basics.homework5.task2.videocard.VideoCardFactory;
 
 public class BuildGamerComputer implements BuildComputer {
 
@@ -12,10 +12,10 @@ public class BuildGamerComputer implements BuildComputer {
   public Computer build() {
     System.out.println("Собран игровой компьютер.");
     return new Computer(
-        new GamerProcessorFactory().addProcessor(),
-        new GamerRamFactory().addRam(),
-        new GamerVideoCardFactory().addVideoCard(),
-        new GamerDataStorageFactory().addDataStorage(),
-        new GamerMonitorFactory().addMonitor());
+        new ProcessorFactory().addComponent(ComputerType.GAMER),
+        new RamFactory().addComponent(ComputerType.GAMER),
+        new VideoCardFactory().addComponent(ComputerType.GAMER),
+        new DataStorageFactory().addComponent(ComputerType.GAMER),
+        new MonitorFactory().addComponent(ComputerType.GAMER));
   }
 }

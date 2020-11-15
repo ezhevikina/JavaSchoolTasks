@@ -1,32 +1,37 @@
 package com.ezhevikina.basics.homework5.task2.processor;
 
-public abstract class Processor {
+import com.ezhevikina.basics.homework5.task2.Component;
+import com.ezhevikina.basics.homework5.task2.ComputerType;
+
+public class Processor implements Component {
   private int coreSpeed;
   private int cores;
   private int cache;
   private String name;
   private String manufacturer;
 
-  public void setCoreSpeed(int coreSpeed) {
-    this.coreSpeed = coreSpeed;
+  public Processor(ComputerType computerType) {
+
+    if (computerType == ComputerType.GAMER) {
+      this.coreSpeed = 100;
+      this.cores = 100;
+      this.cache = 100;
+      this.name = "Игровой процессор";
+      this.manufacturer = "Производитель игровых процессоров";
+
+    } else if (computerType == ComputerType.OFFICE) {
+      this.coreSpeed = 10;
+      this.cores = 10;
+      this.cache = 10;
+      this.name = "Обычный процессор";
+      this.manufacturer = "Производитель обычных процессоров";
+
+    } else {
+      throw new IllegalArgumentException();
+    }
   }
 
-  public void setCores(int cores) {
-    this.cores = cores;
-  }
-
-  public void setCache(int cache) {
-    this.cache = cache;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
-  }
-
+  @Override
   public void printInfo() {
     System.out.println(String.format(
         "%s. Производитель: %s, тактовая частота: %d, ядер: %d, кэш: %d",

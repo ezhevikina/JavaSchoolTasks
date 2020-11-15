@@ -1,6 +1,12 @@
 package com.ezhevikina.basics.homework5.task2.videocard;
 
-public abstract class VideoCardFactory {
+import com.ezhevikina.basics.homework5.task2.Component;
+import com.ezhevikina.basics.homework5.task2.ComponentFactory;
+import com.ezhevikina.basics.homework5.task2.ComputerType;
 
-  public abstract VideoCard addVideoCard();
+public class VideoCardFactory extends ComponentFactory {
+  @Override
+  public Component addComponent(ComputerType computerType) {
+    return new VideoCard(computerType);
+  }
 }

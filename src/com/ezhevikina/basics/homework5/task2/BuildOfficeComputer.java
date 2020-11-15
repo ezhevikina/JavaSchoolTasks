@@ -1,10 +1,10 @@
 package com.ezhevikina.basics.homework5.task2;
 
-import com.ezhevikina.basics.homework5.task2.datastorage.RegularDataStorageFactory;
-import com.ezhevikina.basics.homework5.task2.monitor.RegularMonitorFactory;
-import com.ezhevikina.basics.homework5.task2.processor.RegularProcessorFactory;
-import com.ezhevikina.basics.homework5.task2.ram.RegularRamFactory;
-import com.ezhevikina.basics.homework5.task2.videocard.RegularVideoCardFactory;
+import com.ezhevikina.basics.homework5.task2.datastorage.DataStorageFactory;
+import com.ezhevikina.basics.homework5.task2.monitor.MonitorFactory;
+import com.ezhevikina.basics.homework5.task2.processor.ProcessorFactory;
+import com.ezhevikina.basics.homework5.task2.ram.RamFactory;
+import com.ezhevikina.basics.homework5.task2.videocard.VideoCardFactory;
 
 public class BuildOfficeComputer implements BuildComputer {
 
@@ -12,11 +12,11 @@ public class BuildOfficeComputer implements BuildComputer {
   public Computer build() {
     System.out.println("Собран офисный компьютер.");
     return new Computer(
-        new RegularProcessorFactory().addProcessor(),
-        new RegularRamFactory().addRam(),
-        new RegularVideoCardFactory().addVideoCard(),
-        new RegularDataStorageFactory().addDataStorage(),
-        new RegularMonitorFactory().addMonitor());
+        new ProcessorFactory().addComponent(ComputerType.OFFICE),
+        new RamFactory().addComponent(ComputerType.OFFICE),
+        new VideoCardFactory().addComponent(ComputerType.OFFICE),
+        new DataStorageFactory().addComponent(ComputerType.OFFICE),
+        new MonitorFactory().addComponent(ComputerType.OFFICE));
 
   }
 }

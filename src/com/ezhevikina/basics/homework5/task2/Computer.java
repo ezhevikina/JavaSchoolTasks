@@ -1,19 +1,13 @@
 package com.ezhevikina.basics.homework5.task2;
 
-import com.ezhevikina.basics.homework5.task2.datastorage.DataStorage;
-import com.ezhevikina.basics.homework5.task2.monitor.Monitor;
-import com.ezhevikina.basics.homework5.task2.processor.Processor;
-import com.ezhevikina.basics.homework5.task2.ram.Ram;
-import com.ezhevikina.basics.homework5.task2.videocard.VideoCard;
-
 public class Computer {
-  private Processor processor;
-  private Ram ram;
-  private VideoCard videoCard;
-  private DataStorage dataStorage;
-  private Monitor monitor;
+  private Component processor;
+  private Component ram;
+  private Component videoCard;
+  private Component dataStorage;
+  private Component monitor;
 
-  public Computer(Processor processor, Ram ram, VideoCard videoCard, DataStorage dataStorage, Monitor monitor) {
+  public Computer(Component processor, Component ram, Component videoCard, Component dataStorage, Component monitor) {
     this.processor = processor;
     this.ram = ram;
     this.videoCard = videoCard;
