@@ -24,49 +24,34 @@ import java.util.ArrayList;
  * которые были в первой;
  */
 
-public class Box {
+public class Box<T extends Fruit> {
+  private ArrayList<T> box = new ArrayList<>();
 
-  private ArrayList<Fruit> box = new ArrayList<>();
-  private Fruit fruit;
-  private float weight;
-
-  public Box(Fruit fruit, int amount) {
-    this.fruit = fruit;
-    for (int i = 0; i < amount; i++) {
-      box.add(fruit);
-    }
-  }
-
-  public ArrayList<Fruit> getBox() {
+  public ArrayList<T> getBox() {
     return box;
   }
 
-  public int countFruitsInBox() {
+  public void addFruit(T fruit) {
+    box.add(fruit);
+  }
+
+  public int size() {
     return box.size();
   }
 
-  public Fruit getFruit() {
-    return fruit;
-  }
-
   public float getWeight() {
-    return fruit.getWeight() * box.size();
+    float weight = 0f;
+    for (T fruit : box) {
+      weight += fruit.getWeight();
+    }
+    return weight;
   }
 
   public boolean compare(Box anotherBox) {
     return this.getWeight() == anotherBox.getWeight();
   }
 
-  public void moveToAnotherBox(Box anotherBox) {
-    if (this.fruit.getClass()
-        .equals(anotherBox.getFruit().getClass())) {
-      for (int i = 0; i < box.size(); i++) {
-        anotherBox.getBox().add(fruit);
-      }
-    } else {
-      System.out.println(String.format("Нельзя смешивать %s и %s",
-          this.fruit.getClass().getSimpleName(),
-          anotherBox.getFruit().getClass().getSimpleName()));
-    }
+  public void moveToAnotherBox(Box<T> anotherBox) {
+    anotherBox.getBox().addAll(this.box);
   }
 }

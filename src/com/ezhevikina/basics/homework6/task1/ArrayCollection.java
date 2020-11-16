@@ -1,36 +1,45 @@
 package com.ezhevikina.basics.homework6.task1;
 
-import java.util.ArrayList;
-
 public class ArrayCollection<E> {
-
-  private final ArrayList<E> arrayCollection;
+  private E[] values;
 
   public ArrayCollection() {
-    arrayCollection = new ArrayList<>();
-  }
-
-  public int size() {
-    return arrayCollection.size();
+    this.values = (E[]) new Object[0];
   }
 
   public void add(E element) {
-    arrayCollection.add(element);
+    E[] tmp = values;
+    values = (E[]) new Object[tmp.length + 1];
+    System.arraycopy(tmp, 0, values, 0, tmp.length);
+    values[values.length - 1] = element;
   }
 
   public void remove(int index) {
-    arrayCollection.remove(index);
-  }
-
-  public void remove(E element) {
-    arrayCollection.remove(element);
+    E[] tmp = values;
+    values = (E[]) new Object[tmp.length - 1];
+    System.arraycopy(tmp, 0, values, 0, index);
+    int elementsAfterIndex = tmp.length - index - 1;
+    System.arraycopy(tmp, index + 1, values, index, elementsAfterIndex);
   }
 
   public E get(int index) {
-    return arrayCollection.get(index);
+    return values[index];
+  }
+
+  public int size() {
+    return values.length;
+  }
+
+  public void remove(E element) {
+    for (int i = 0; i < values.length; i++) {
+      if (values[i] == element) {
+        this.remove(i);
+        break;
+      }
+    }
   }
 
   public void clear() {
-    arrayCollection.clear();
+    values = (E[]) new Object[]{};
   }
 }
